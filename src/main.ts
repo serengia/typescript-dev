@@ -47,7 +47,10 @@ class Coder {
 
 // Index signature
 interface TransactionInt {
-  [index: string]: number;
+  //   [index: string]: number;
+  Book: number;
+  Pizza: number;
+  Transport: number;
 }
 
 const jamesTransactions: TransactionInt = {
@@ -59,7 +62,7 @@ const jamesTransactions: TransactionInt = {
 function calculateExpenditure(transactions: TransactionInt): number {
   let total = 0;
   for (const trans in transactions) {
-    total += transactions[trans];
+    total += transactions[trans as keyof TransactionInt];
   }
   return total;
 }
